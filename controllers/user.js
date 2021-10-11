@@ -4,7 +4,7 @@ const { roles } = require("../utils/roles");
 const bcrypt = require("bcrypt");
 
 exports.signup = async (req, res) => {
-  const { firstname, lastname, phonenumber, password, email } = req.body;
+  const { firstname, lastname, phonenumber, password, email ,role} = req.body;
   try {
     const user = await User.create({
       firstname,
@@ -12,9 +12,11 @@ exports.signup = async (req, res) => {
       phonenumber,
       password,
       email,
+      role
     });
     return res.status(200).send({
       message: "User stored successfully",
+      userid:  user._id
     });
   } catch (err) {
     console.log(`Error while storing to db, ${err}`);
@@ -70,12 +72,14 @@ exports.getUserInfo = (req, res) => {
   const { firstname, lastname, phonenumber, email, profileimage, isActive } =
     req.user;
   return res.status(200).json({
-    firstname,
-    lastname,
-    phonenumber,
-    email,
-    profileimage,
-    isActive,
+    id:_id,
+    FirstName:firstname,
+    lastName:lastname,
+    Mobile:phonenumber,
+    email:email,
+    Image:profileimage,
+    IsActive:isActive,
+    role:role,
   });
 };
 
