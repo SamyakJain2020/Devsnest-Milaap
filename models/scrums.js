@@ -12,10 +12,6 @@ const Scrum = sequelize.define('Scrum', {
         type: DataTypes.UUID,
         allowNull: false,
     },
-    _teamId:{
-        type: DataTypes.STRING,
-        // allowNull: false,
-    },  
     isPresent: {
         type: DataTypes.BOOLEAN,
         // allowNull: false
@@ -44,6 +40,10 @@ const Scrum = sequelize.define('Scrum', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    _teamId:{
+        type: DataTypes.STRING,
+        // allowNull: false,
+    },  
 }, {
     tableName: 'Scrum'
 });

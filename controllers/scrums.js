@@ -4,7 +4,7 @@ const User = require("../models/user");
 const Team = require("../models/teams");
 
 exports.fillScrum = async (req, res) => {
-  const { _uid, _teamId, backlog, lastLecture, progress, link, topicsToCover } =
+  const { _uid, backlog, lastLecture, progress, link, topicsToCover } =
     req.body;
   try {
     const date = new Date();
@@ -23,7 +23,6 @@ exports.fillScrum = async (req, res) => {
       console.log("in else");
       const scrum = await Scrum.create({
         _uid,
-        _teamId,
         backlog,
         lastLecture,
         progress,
