@@ -23,7 +23,7 @@ exports.fillScrum = async (req, res) => {
       console.log("in else");
       const scrum = await Scrum.create({
         _uid,
-        //_teamId=userTeam._teamId,
+        _teamId,
         backlog,
         lastLecture,
         progress,
