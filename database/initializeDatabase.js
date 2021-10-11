@@ -1,34 +1,43 @@
-// const sequelize = new Sequelize(
-//     process.env.DATABSE_NAME,
-//     process.env.DATABASE_USERNAME,
-//     process.env.DATABASE_PASSWORD,
-//     {
-//         host: 'localhost',
-//         dialect: 'postgres'
-//     }
-// );
+const {Sequelize} = require('sequelize');
 
-// sequelize.sync();
+const sequelize = new Sequelize(
+    process.env.DATABASE_URL, {
+        dialect: 'postgres',
+        protocol: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        }
+    }
+    // process.env.DATABSE_NAME,
+    // process.env.DATABASE_USERNAME,
+    // process.env.DATABASE_PASSWORD,
+    // {
+    //     host: 'localhost',
+    //     dialect: 'postgres'
+    // }
+);
 
-// //connecting to POSTGRES
-// (async function() {
-//     try {
-//         await sequelize.authenticate();
-//         console.log(`DB ${process.env.DATABSE_NAME}, CONNECTED SUCCESSFULLY`);
-//     } catch(err) {
-//         console.log(`Unablt to connect Database`);
-//     }
-// })();
+sequelize.sync();
 
-const { Client } = require('pg');
+//connecting to POSTGRES
+(async function() {
+    try {
+        await sequelize.authenticate();
+        console.log(`DB ${process.env.DATABSE_NAME}, CONNECTED SUCCESSFULLY`);
+    } catch(err) {
+        console.log(`Unablt to connect Database`);
+    }
+})();
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+// const { Client } = require('pg');
 
-client.connect();
+// const client = new Client({
+  
+// });
 
-module.exports = Client;
+// client.connect();
+
+module.exports = sequelize;
