@@ -14,7 +14,7 @@ const Scrum = sequelize.define('Scrum', {
     },
     _teamId:{
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
     },  
     isPresent: {
         type: DataTypes.BOOLEAN,
