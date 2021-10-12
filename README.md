@@ -1,6 +1,5 @@
 # Devsnest-Milaap
-
-link to sequelize ORM -> https://sequelize.org/master/manual/getting-started.html
+SOME CODE WORKING ON LOCAL, NOT ON HEROKU
 
 //TODO:
 express-validator ? should we use
