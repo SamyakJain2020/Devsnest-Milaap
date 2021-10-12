@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(cors());
 
 //body parser
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));-
 app.use(express.json());
 app.use('/api', userRouter);
 app.use('/api', batchRouter);
